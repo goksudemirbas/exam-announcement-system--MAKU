@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinavİlanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bolums">
+    <Key>
+      <PropertyRef Name="BolumId" />
+    </Key>
+    <Property Name="BolumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BolumAdi" Type="varchar" MaxLength="50" />
+    <Property Name="aktiflik" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ders">
+    <Key>
+      <PropertyRef Name="DersId" />
+    </Key>
+    <Property Name="DersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DersAdi" Type="varchar" MaxLength="50" />
+    <Property Name="aktiflik" Type="bit" Nullable="false" />
+    <Property Name="BolumId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanicis">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eposta" Type="varchar" MaxLength="30" />
+    <Property Name="sifre" Type="varchar" MaxLength="30" />
+    <Property Name="yetki" Type="char" MaxLength="5" />
+    <Property Name="aktiflik" Type="bit" Nullable="false" />
+    <Property Name="AdSoyad" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Saats">
+    <Key>
+      <PropertyRef Name="saatId" />
+    </Key>
+    <Property Name="saatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="saat" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Salons">
+    <Key>
+      <PropertyRef Name="salonId" />
+    </Key>
+    <Property Name="salonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="salonAdi" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Sinavİlan">
+    <Key>
+      <PropertyRef Name="SinavIlanNo" />
+    </Key>
+    <Property Name="SinavIlanNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tarih" Type="datetime" Nullable="false" />
+    <Property Name="DersId" Type="int" />
+    <Property Name="sinifId" Type="int" />
+    <Property Name="saatId" Type="int" />
+    <Property Name="kullaniciId" Type="int" />
+    <Property Name="salonId" Type="int" />
+    <Property Name="açıklama" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sinifs">
+    <Key>
+      <PropertyRef Name="sinifId" />
+    </Key>
+    <Property Name="sinifId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SinifAdi" Type="varchar" MaxLength="30" />
+    <Property Name="BolumAdi" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Ders_Bolums">
+    <End Role="Bolums" Type="Self.Bolums" Multiplicity="1" />
+    <End Role="Ders" Type="Self.Ders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolums">
+        <PropertyRef Name="BolumId" />
+      </Principal>
+      <Dependent Role="Ders">
+        <PropertyRef Name="BolumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinavİlan_Ders">
+    <End Role="Ders" Type="Self.Ders" Multiplicity="0..1" />
+    <End Role="Sinavİlan" Type="Self.Sinavİlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ders">
+        <PropertyRef Name="DersId" />
+      </Principal>
+      <Dependent Role="Sinavİlan">
+        <PropertyRef Name="DersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinavİlan_Kullanicis1">
+    <End Role="Kullanicis" Type="Self.Kullanicis" Multiplicity="0..1" />
+    <End Role="Sinavİlan" Type="Self.Sinavİlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicis">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Sinavİlan">
+        <PropertyRef Name="kullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinavİlan_Saats1">
+    <End Role="Saats" Type="Self.Saats" Multiplicity="0..1" />
+    <End Role="Sinavİlan" Type="Self.Sinavİlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saats">
+        <PropertyRef Name="saatId" />
+      </Principal>
+      <Dependent Role="Sinavİlan">
+        <PropertyRef Name="saatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinavİlan_Salons">
+    <End Role="Salons" Type="Self.Salons" Multiplicity="0..1" />
+    <End Role="Sinavİlan" Type="Self.Sinavİlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salons">
+        <PropertyRef Name="salonId" />
+      </Principal>
+      <Dependent Role="Sinavİlan">
+        <PropertyRef Name="salonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinavİlan_Sinifs1">
+    <End Role="Sinifs" Type="Self.Sinifs" Multiplicity="0..1" />
+    <End Role="Sinavİlan" Type="Self.Sinavİlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sinifs">
+        <PropertyRef Name="sinifId" />
+      </Principal>
+      <Dependent Role="Sinavİlan">
+        <PropertyRef Name="sinifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SinavİlanModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bolums" EntityType="Self.Bolums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ders" EntityType="Self.Ders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanicis" EntityType="Self.Kullanicis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saats" EntityType="Self.Saats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salons" EntityType="Self.Salons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sinavİlan" EntityType="Self.Sinavİlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sinifs" EntityType="Self.Sinifs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ders_Bolums" Association="Self.FK_Ders_Bolums">
+      <End Role="Bolums" EntitySet="Bolums" />
+      <End Role="Ders" EntitySet="Ders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinavİlan_Ders" Association="Self.FK_Sinavİlan_Ders">
+      <End Role="Ders" EntitySet="Ders" />
+      <End Role="Sinavİlan" EntitySet="Sinavİlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinavİlan_Kullanicis1" Association="Self.FK_Sinavİlan_Kullanicis1">
+      <End Role="Kullanicis" EntitySet="Kullanicis" />
+      <End Role="Sinavİlan" EntitySet="Sinavİlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinavİlan_Saats1" Association="Self.FK_Sinavİlan_Saats1">
+      <End Role="Saats" EntitySet="Saats" />
+      <End Role="Sinavİlan" EntitySet="Sinavİlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinavİlan_Salons" Association="Self.FK_Sinavİlan_Salons">
+      <End Role="Salons" EntitySet="Salons" />
+      <End Role="Sinavİlan" EntitySet="Sinavİlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinavİlan_Sinifs1" Association="Self.FK_Sinavİlan_Sinifs1">
+      <End Role="Sinifs" EntitySet="Sinifs" />
+      <End Role="Sinavİlan" EntitySet="Sinavİlan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

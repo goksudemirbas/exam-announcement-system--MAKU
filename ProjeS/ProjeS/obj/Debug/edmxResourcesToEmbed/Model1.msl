@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SinavİlanModelStoreContainer" CdmEntityContainer="SinavİlanEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="SinavİlanModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bolums">
+      <EntityTypeMapping TypeName="SinavİlanModel.Bolums">
+        <MappingFragment StoreEntitySet="Bolums">
+          <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+          <ScalarProperty Name="BolumAdi" ColumnName="BolumAdi" />
+          <ScalarProperty Name="aktiflik" ColumnName="aktiflik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ders">
+      <EntityTypeMapping TypeName="SinavİlanModel.Ders">
+        <MappingFragment StoreEntitySet="Ders">
+          <ScalarProperty Name="DersId" ColumnName="DersId" />
+          <ScalarProperty Name="DersAdi" ColumnName="DersAdi" />
+          <ScalarProperty Name="aktiflik" ColumnName="aktiflik" />
+          <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicis">
+      <EntityTypeMapping TypeName="SinavİlanModel.Kullanicis">
+        <MappingFragment StoreEntitySet="Kullanicis">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="eposta" ColumnName="eposta" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="yetki" ColumnName="yetki" />
+          <ScalarProperty Name="aktiflik" ColumnName="aktiflik" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saats">
+      <EntityTypeMapping TypeName="SinavİlanModel.Saats">
+        <MappingFragment StoreEntitySet="Saats">
+          <ScalarProperty Name="saatId" ColumnName="saatId" />
+          <ScalarProperty Name="saat" ColumnName="saat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salons">
+      <EntityTypeMapping TypeName="SinavİlanModel.Salons">
+        <MappingFragment StoreEntitySet="Salons">
+          <ScalarProperty Name="salonId" ColumnName="salonId" />
+          <ScalarProperty Name="salonAdi" ColumnName="salonAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sinavİlan">
+      <EntityTypeMapping TypeName="SinavİlanModel.Sinavİlan">
+        <MappingFragment StoreEntitySet="Sinavİlan">
+          <ScalarProperty Name="SinavIlanNo" ColumnName="SinavIlanNo" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="DersId" ColumnName="DersId" />
+          <ScalarProperty Name="sinifId" ColumnName="sinifId" />
+          <ScalarProperty Name="saatId" ColumnName="saatId" />
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="salonId" ColumnName="salonId" />
+          <ScalarProperty Name="açıklama" ColumnName="açıklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sinifs">
+      <EntityTypeMapping TypeName="SinavİlanModel.Sinifs">
+        <MappingFragment StoreEntitySet="Sinifs">
+          <ScalarProperty Name="sinifId" ColumnName="sinifId" />
+          <ScalarProperty Name="SinifAdi" ColumnName="SinifAdi" />
+          <ScalarProperty Name="BolumAdi" ColumnName="BolumAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SinavİlanModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
